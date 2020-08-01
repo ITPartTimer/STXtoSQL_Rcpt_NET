@@ -12,14 +12,7 @@ namespace STXtoSQL_Rcpt_NET
     class Program
     {
         static void Main(string[] args)
-        {
-            /*
-             * COPY IN CODE FROM IPTFRC PROJECT
-             * 1. Put all Rcpts in IMPORT_tbl_Header
-             * 2. Compare (1) to Rcts in WIP_tbl_Items
-             * 3. ODBC query for Items using Rcpts from (2)
-             * 4. Call SP to stamp and put new IMPORT items into WIP
-             */
+        {           
             Logger.LogWrite("MSG", "Start: " + DateTime.Now.ToString());
 
             // Declare and defaults

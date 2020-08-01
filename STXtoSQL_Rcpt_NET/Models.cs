@@ -25,6 +25,7 @@ namespace STXtoSQL.Models
         public int po_itm { get; set; }
         public decimal wdth { get; set; }
         public string bgt_as_part { get; set; }
+        public int shpnt_wgt { get; set; }
         public int tot_shpnt_wgt { get; set; }
         public int pps_ctl_no { get; set; }
         public int itm_ctl_no {get; set;}

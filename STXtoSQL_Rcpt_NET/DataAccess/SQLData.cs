@@ -174,9 +174,9 @@ namespace STXtoSQL.DataAccess
                     // Change Text to Insert data into IMPORT
                     cmd.CommandText = @"INSERT INTO RCPT_IMPORT_tbl_Items(cus_ven_id,rcvg_whs,rcpt_dt,rcpt_no,rcpt_itm,
                                         ven_shp_ref,crr_vcl_desc,po_pfx,po_no,po_itm,wdth,bgt_as_part,
-                                        tot_shpnt_wgt,pps_ctl_no,itm_ctl_no,tag_no,mill,mill_id,due_fm_dt,due_to_dt) " +
+                                        tot_shpnt_wgt,pps_ctl_no,itm_ctl_no,tag_no,mill,mill_id,due_fm_dt,due_to_dt,shpnt_wgt) " +
                                         "VALUES (@arg1,@arg2,@arg3,@arg4,@arg5,@arg6,@arg7,@arg8,@arg9,@arg10,@arg11," +
-                                        "@arg12,@arg13,@arg14,@arg15,@arg16,@arg17,@arg18,@arg19,@arg20)";
+                                        "@arg12,@arg13,@arg14,@arg15,@arg16,@arg17,@arg18,@arg19,@arg20,@arg21)";
 
                     cmd.Parameters.Add("@arg1", SqlDbType.Int);
                     cmd.Parameters.Add("@arg2", SqlDbType.VarChar);
@@ -198,6 +198,7 @@ namespace STXtoSQL.DataAccess
                     cmd.Parameters.Add("@arg18", SqlDbType.VarChar);
                     cmd.Parameters.Add("@arg19", SqlDbType.DateTime);
                     cmd.Parameters.Add("@arg20", SqlDbType.DateTime);
+                    cmd.Parameters.Add("@arg21", SqlDbType.Int);
 
                     foreach (Items s in lstItems)
                     {
@@ -221,6 +222,7 @@ namespace STXtoSQL.DataAccess
                         cmd.Parameters[17].Value = s.mill_id.ToString();
                         cmd.Parameters[18].Value = s.due_fm_dt;
                         cmd.Parameters[19].Value = s.due_to_dt;
+                        cmd.Parameters[20].Value = Convert.ToInt32(s.shpnt_wgt);
 
                         cmd.ExecuteNonQuery();
                     }

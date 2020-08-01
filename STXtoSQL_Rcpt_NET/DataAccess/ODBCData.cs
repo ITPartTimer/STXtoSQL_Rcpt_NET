@@ -70,7 +70,7 @@ namespace STXtoSQL.DataAccess
 
                 // Get receipt no for all PO pre-receipt records where rcpt_no is in a list
                 cmd.CommandText = @"select rch_cus_ven_id,rch_rcvg_whs,rch_rcpt_dt,rci_rcpt_pfx,rci_rcpt_no,rci_rcpt_itm,rch_ven_shp_ref,
-                                    rch_crr_vcl_desc,rci_po_pfx,rci_po_no,rci_po_itm,rci_wdth,rci_bgt_as_part,rci_tot_shpnt_wgt,
+                                    rch_crr_vcl_desc,rci_po_pfx,rci_po_no,rci_po_itm,rci_wdth,rci_bgt_as_part,rcd_shpnt_wgt,rci_tot_shpnt_wgt,
                                     rci_pps_ctl_no,rcd_itm_ctl_no,prd_tag_no,prd_mill,pcr_mill_id,por_due_fm_dt,por_due_to_dt
                                     from trtrci_rec rci
                                     inner join trtrch_rec rch
@@ -105,6 +105,7 @@ namespace STXtoSQL.DataAccess
                         b.po_itm = Convert.ToInt32(rdr["rci_po_itm"]);
                         b.wdth = Convert.ToDecimal(rdr["rci_wdth"]);
                         b.bgt_as_part = rdr["rci_bgt_as_part"].ToString();
+                        b.shpnt_wgt = Convert.ToInt32(rdr["rcd_shpnt_wgt"]);
                         b.tot_shpnt_wgt = Convert.ToInt32(rdr["rci_tot_shpnt_wgt"]);
                         b.pps_ctl_no = Convert.ToInt32(rdr["rci_pps_ctl_no"]);
                         b.itm_ctl_no = Convert.ToInt32(rdr["rcd_itm_ctl_no"]);

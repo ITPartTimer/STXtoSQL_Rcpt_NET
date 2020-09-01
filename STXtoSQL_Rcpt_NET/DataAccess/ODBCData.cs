@@ -76,13 +76,13 @@ namespace STXtoSQL.DataAccess
                                     inner join trtrch_rec rch
                                     on rci.rci_rcpt_no = rch.rch_rcpt_no
                                     inner join trtrcd_rec rcd
-                                    on rci.rci_rcpt_no || rci.rci_rcpt_itm = rcd.rcd_rcpt_no || rcd.rcd_rcpt_itm
+                                    on rci.rci_rcpt_no + rci.rci_rcpt_itm = rcd.rcd_rcpt_no + rcd.rcd_rcpt_itm
                                     inner join intprd_rec prd
                                     on rcd.rcd_itm_ctl_no = prd.prd_itm_ctl_no
                                     inner join intpcr_rec pcr
                                     on prd.prd_itm_ctl_no = pcr.pcr_itm_ctl_no
                                     inner join potpor_rec por
-                                    on rci.rci_po_no || rci.rci_po_itm = por.por_po_no || por.por_po_itm
+                                    on rci.rci_po_no + rci.rci_po_itm = por.por_po_no + por.por_po_itm
                                     where rci_rcpt_no in (" + strRcpt + ")";
 
                 OdbcDataReader rdr = cmd.ExecuteReader();
